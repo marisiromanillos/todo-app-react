@@ -1,18 +1,20 @@
 import React from "react";
+import Todo from "./Todo";
 
 const Todos = (props) => {
-  const { todos, onToggleCompleted } = props;
+  const { todos, onToggleCompleted, onDelete, onSaveEdit } = props;
   return (
     <>
       <ul>
         {todos.map((todo) => {
           return (
-            <li
-              onClick={() => onToggleCompleted(todo.id)}
-              className={todo.completed && "completed"}
-            >
-              {todo.title}
-            </li>
+            <Todo
+              key={todo.id}
+              todo={todo}
+              onToggleCompleted={onToggleCompleted}
+              onDelete={onDelete}
+              onSaveEdit={onSaveEdit}
+            />
           );
         })}
       </ul>
