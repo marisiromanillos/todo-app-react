@@ -11,8 +11,8 @@ const Stats = (props) => {
   });
   return (
     <>
-      <p>Done: {done}</p>
-      <p>Undone: {todos.length - done}</p>
+      <p className="stats">Done: {done}</p>
+      <p className="stats">Undone: {todos.length - done}</p>
     </>
   );
 };

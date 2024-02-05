@@ -6,11 +6,15 @@ const TodoEdit = (props) => {
     <>
       {edit ? (
         <>
-          <input onInput={onInput} type="text" />
-          <button onClick={onSave}>Save</button>
+          <input onInput={onInput} type="text" className="listoftodos" />
+          <button onClick={onSave} className="button2">
+            Save
+          </button>
         </>
       ) : (
-        <button onClick={() => setEdit(true)}>Edit</button>
+        <button className="button2" onClick={() => setEdit(true)}>
+          Edit
+        </button>
       )}
     </>
   );

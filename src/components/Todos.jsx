@@ -5,7 +5,7 @@ const Todos = (props) => {
   const { todos, onToggleCompleted, onDelete, onSaveEdit } = props;
   return (
     <>
-      <ul>
+      <ul className="listoftodos">
         {todos.map((todo) => {
           return (
             <Todo

@@ -20,6 +20,7 @@ const Todo = (props) => {
       <li className={todo.completed ? "completed" : ""}>
         <p onClick={() => onToggleCompleted(todo.id)}> {todo.title}</p>
         <button
+          className="button2"
           onClick={() => {
             onDelete(todo.id);
           }}

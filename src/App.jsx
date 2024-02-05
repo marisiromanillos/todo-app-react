@@ -6,7 +6,8 @@ import Stats from "./components/Stats";
 import Title from "./components/Title";
 import Footer from "./components/Footer";
 const App = () => {
-  const [todos, setTodos] = useState();
+  const [todos, setTodos] = useState([]);
+  const [todo, setTodo] = useState("");
 
   const getTodos = useCallback(async () => {
     try {
@@ -47,21 +48,43 @@ const App = () => {
     setTodos(_todos);
   };
 
+  //allows me to write my todo
+  const onInput = (e) => {
+    setTodo(e.target.value);
+  };
+
+  //adds my todo
+
+  const onClick = () => {
+    const copy = [...todos];
+    copy.push({ userId: 1, title: todo });
+    setTodos(copy);
+  };
+
   if (!todos) {
     return <h3>Loading Todos!</h3>;
   }
 
   return (
     <>
-      <Title />
-      <Stats todos={todos} />
-      <Todos
-        todos={todos}
-        onToggleCompleted={onToggleCompleted}
-        onDelete={onDelete}
-        onSaveEdit={onSaveEdit}
-      />
-      <Footer />
+      <div className="background">
+        <Title />
+        <div className="inputadd">
+          <input onInput={onInput} className="inputbox" />
+          <button onClick={onClick} className="button">
+            Add Todo
+          </button>
+        </div>
+
+        <Stats todos={todos} />
+        <Todos
+          todos={todos}
+          onToggleCompleted={onToggleCompleted}
+          onDelete={onDelete}
+          onSaveEdit={onSaveEdit}
+        />
+        <Footer />
+      </div>
     </>
   );
 };
